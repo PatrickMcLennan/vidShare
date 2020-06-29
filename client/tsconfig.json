@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "paths": {
+      "Component/*": ["src/components/*"],
+      "Hook/*": ["src/hooks/*"],
+      "Context/*": ["src/contexts/*"],
+      "Utility/*": ["src/utils/*"],
+      "View/*": ["src/views/*"]
+    }
+  }
+}
