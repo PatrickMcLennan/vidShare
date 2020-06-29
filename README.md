@@ -17,3 +17,7 @@ Decoupled platform to share videos with friends.
 - uuid
 - class-validator
 - class-transformer
+
+#### Auth
+
+- jwt
