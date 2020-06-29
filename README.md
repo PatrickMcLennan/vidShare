@@ -6,17 +6,21 @@ Decoupled platform to share videos with friends.
 
 #### Front End
 
-- React
-- React Router
-- Jest + @react-testing-library
+- axios
 - Framer Motion
+- Jest + @react-testing-library
+- React
+- react-hook-form
+- react-router-dom
+- styled-components
+- webpack
 
 #### Back End
 
-- nestjs
-- uuid
 - class-validator
 - class-transformer
+- nestjs
+- uuid
 
 #### Auth
 
