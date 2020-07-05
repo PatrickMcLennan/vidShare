@@ -6,8 +6,8 @@ import { FieldError } from "react-hook-form";
 export const Form = styled.form`
   ${({ theme: { flexin } }) => flexin(`center`, `center`, `column`)};
   ${({ theme: { elevation } }) => elevation(0)}
-  margin: auto 0;
-  grid-column-start: 2;
+  margin: auto 17.5vw;
+  grid-column: 1 / -1;
   padding: 45px 30px;
   border: 1px solid #e3e3e3;
   border-radius: 3px;

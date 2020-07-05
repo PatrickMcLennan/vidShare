@@ -17,9 +17,8 @@ function VideoCard({ video, viewMode }: IProps): JSX.Element {
     <S.Button viewMode={viewMode}>
       <h6 className="title">{title}</h6>
       <p className="description">{description}</p>
-      {source === `VIMEO` && <VimeoSVG />}
-      {source === `YOUTUBE` && <YouTubeSVG />}
-      <span className="source">{source}</span>
+      {source === `VIMEO` && <VimeoSVG customClass="svg" />}
+      {source === `YOUTUBE` && <YouTubeSVG customClass="svg" />}
     </S.Button>
   );
 }

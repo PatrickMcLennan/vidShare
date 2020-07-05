@@ -23,10 +23,6 @@ function Feed(): JSX.Element {
         <Search />
         <Results />
       </S.MainColumn>
-
-      <S.RightColumn>
-        <div>this is the right column</div>
-      </S.RightColumn>
     </>
   );
 }

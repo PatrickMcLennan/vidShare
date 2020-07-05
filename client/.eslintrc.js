@@ -42,5 +42,10 @@ module.exports = {
     "object-curly-newline": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-cycle": "off",
+    "no-confusing-arrow": "off",
+    "consistent-return": "1",
+    "no-else-return": "off",
+    "nonblock-statement-body-position": "off",
+    curly: "off",
   },
 };

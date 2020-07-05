@@ -34,8 +34,8 @@ export const GlobalStyle: GlobalStyleComponent<
     display: grid;
     grid-row: 2;
     grid-template-areas:
-      "left-sidebar main-column right-sidebar";
-    grid-template-columns: minmax(20%, max-content) 1fr minmax(20%, max-content);
+      "left-sidebar main-column";
+    grid-template-columns: minmax(20%, max-content) 1fr;
   }
 
   ul,
@@ -83,10 +83,6 @@ export const theme = {
 
   mainColumn: (): FlattenSimpleInterpolation => css`
     grid-area: main-column;
-  `,
-
-  rightColumn: (): FlattenSimpleInterpolation => css`
-    grid-area: right-sidebar;
   `,
 
   /* Typography */

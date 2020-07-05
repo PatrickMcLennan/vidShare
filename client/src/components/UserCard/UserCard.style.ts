@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { ViewMode } from "src/types/ui/viewmode.enum";
 
 export const Article = styled.article<{ viewMode: ViewMode }>`
   display: grid;
@@ -14,7 +15,6 @@ export const Article = styled.article<{ viewMode: ViewMode }>`
             "savedVideos";
           grid-template-rows: repeat(max-content, 3);
           padding-top: 15px;
-          padding-right: 15px;
           text-align: right;
 
           .name {

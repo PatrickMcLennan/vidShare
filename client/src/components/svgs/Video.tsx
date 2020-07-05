@@ -1,8 +1,9 @@
 import React from "react";
 
-function VimeoSVG(): JSX.Element {
+function VimeoSVG({ customClass }: { customClass: string }): JSX.Element {
   return (
     <svg
+      className={customClass}
       enableBackground="new 0 0 24 24"
       height="512"
       viewBox="0 0 24 24"

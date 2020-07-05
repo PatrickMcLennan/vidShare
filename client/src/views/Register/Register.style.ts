@@ -12,8 +12,8 @@ export const Form = styled.form`
     "password confirmPassword"
     "submit submit";
   column-gap: 15px;
-  margin: auto 0;
-  grid-column-start: 2;
+  margin: auto 17.5vw;
+  grid-column: 1 / -1;
   padding: 45px 30px;
   border: 1px solid #e3e3e3;
   border-radius: 3px;

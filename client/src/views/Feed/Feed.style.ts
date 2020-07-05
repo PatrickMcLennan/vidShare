@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import AsyncSelect from "react-select/async";
+import AsyncCreatableSelect from "react-select/async-creatable";
 
 export const LeftSidebar = styled.section`
   ${({ theme: { leftSidebar } }) => leftSidebar()};
@@ -7,15 +7,12 @@ export const LeftSidebar = styled.section`
 `;
 
 export const MainColumn = styled.section`
-  ${({ theme: { mainColumn } }) => mainColumn()}
+  ${({ theme: { mainColumn } }) => mainColumn()};
+  padding: 50px;
 `;
 
-export const RightColumn = styled.section`
-  ${({ theme: { rightColumn } }) => rightColumn()}
-`;
-
-export const Search = styled(AsyncSelect)`
-  margin-top: 40px;
+export const Search = styled(AsyncCreatableSelect)`
+  /* margin-top: 40px; */
 `;
 
 export const Results = styled.section`

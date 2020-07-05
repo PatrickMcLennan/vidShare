@@ -1,22 +1,22 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
-import AsyncSelect from "react-select/async";
+import { useHistory, useLocation } from "react-router-dom";
 import makeAnimated from "react-select/animated";
-import * as qs from "query-string";
 import { useQuery } from "Hook/useQuery";
 
+import { useUpdateParams } from "Hook/useUpdateParams";
 import * as S from "../Feed.style";
 
 function Search(): JSX.Element {
-  const [input, setInput] = useState(``);
   const components = makeAnimated();
+  const history = useHistory();
+  const location = useLocation();
   const params = useQuery;
   const filterColors = (inputValue) =>
     [
-      { label: `green`, value: 0 },
-      { label: `red`, value: 1 },
-      { label: `orange`, value: 2 },
-      { label: `blue`, value: 3 },
+      { label: `green`, value: 0, search: `category` },
+      { label: `red`, value: 1, search: `youtube` },
+      { label: `orange`, value: 2, search: `vimeo` },
+      { label: `blue`, value: 3, search: `category` },
     ].filter((color) => color.label.includes(inputValue.toLowerCase()));
 
   const loadOptions = (inputValue, callback) => {
@@ -25,11 +25,8 @@ function Search(): JSX.Element {
     }, 1000);
   };
 
-  const handleInputChange = (newString: string) => {
-    setInput(newString);
-    return newString;
-  };
-
+  const handleInputChange = (newString: string) =>
+    useUpdateParams(newString, history, location);
   return (
     <S.Search
       cacheOptions
