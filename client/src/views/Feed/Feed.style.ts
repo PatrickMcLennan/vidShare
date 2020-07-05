@@ -3,7 +3,7 @@ import AsyncSelect from "react-select/async";
 
 export const LeftSidebar = styled.section`
   ${({ theme: { leftSidebar } }) => leftSidebar()};
-  ${({ theme: { flexin } }) => flexin(`center`, `center`, `column`)};
+  ${({ theme: { flexin } }) => flexin(`flex-start`, `flex-end`, `column`)};
 `;
 
 export const MainColumn = styled.section`

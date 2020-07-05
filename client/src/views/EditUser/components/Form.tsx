@@ -1,10 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { SubmitHandler, IUser } from "common";
+import { ApiError } from "src/types/client/api-error.interface";
+import { User } from "src/types/users/user.model";
 
 interface IProps {
-  onSubmit: SubmitHandler;
-  user: IUser;
+  onSubmit: () => Promise<void | ApiError>;
+  user: User;
 }
 
 function Form({ onSubmit, user }: IProps): JSX.Element {

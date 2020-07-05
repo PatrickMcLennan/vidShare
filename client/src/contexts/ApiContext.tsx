@@ -4,7 +4,9 @@ import axios, { AxiosResponse, AxiosError } from "axios";
 
 import { LoadingToast } from "Component/Toasts/Toasts";
 import client from "Utility/client";
-import { ApiError, IUser, IVideo } from "common";
+import { ApiError } from "src/types/client/api-error.interface";
+import { User } from "src/types/users/user.model";
+import { Video } from "src/types/videos/video.model";
 
 export interface IApiContext {
   logIn: (
@@ -21,7 +23,7 @@ export interface IApiContext {
     firstName: string;
     password: string;
   }) => Promise<void | ApiError>;
-  editUser: (user: IUser) => Promise<IUser | ApiError>;
+  editUser: (user: User) => Promise<User | ApiError>;
 }
 
 export const ApiContext = createContext({} as IApiContext);
@@ -72,7 +74,7 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
   const logIn = (
     showLoading = true,
     { email, password }
-  ): Promise<void | IUser> => {
+  ): Promise<void | ApiError> => {
     if (showLoading) LoadingToast(`Logging in...`);
     return axios({
       method: `POST`,
@@ -139,9 +141,9 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
   /**
    * @desc Edits a USer
    * @param editedUser Current user being edited
-   * @return IUser Returns User
+   * @return User Returns User
    */
-  const editUser = (editedUser): Promise<AxiosResponse<IUser> | ApiError> => {
+  const editUser = (editedUser): Promise<AxiosResponse<User> | ApiError> => {
     LoadingToast(`doing things . . . `);
     return client({
       method: `POST`,
@@ -150,7 +152,7 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
         user: editedUser,
       },
     })
-      .then((changedUser: AxiosResponse<IUser>) => changedUser)
+      .then((changedUser: AxiosResponse<User>) => changedUser)
       .catch(
         (error: AxiosError): ApiError => ({
           responseCode: Number(error.code),
@@ -172,7 +174,7 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
 
   const searchVideos = (
     criteriaObject
-  ): Promise<AxiosResponse<IVideo[]> | ApiError> => {
+  ): Promise<AxiosResponse<Video[]> | ApiError> => {
     LoadingToast(`Searching . . .`);
     return client({
       method: `POST`,
@@ -180,7 +182,7 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
       data: criteriaObject,
     })
       .then(
-        (results: AxiosResponse<IVideo[]>): AxiosResponse<IVideo[]> => results
+        (results: AxiosResponse<Video[]>): AxiosResponse<Video[]> => results
       )
       .catch(
         (error: AxiosError): ApiError => ({

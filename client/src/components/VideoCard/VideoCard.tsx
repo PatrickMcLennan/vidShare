@@ -1,12 +1,13 @@
 import React from "react";
-import { ViewMode, IVideo } from "common";
 
 import VimeoSVG from "Component/svgs/Video";
 import YouTubeSVG from "Component/svgs/YouTubeSVG";
+import { Video } from "src/types/videos/video.model";
+import { ViewMode } from "src/types/ui/viewmode.enum";
 import * as S from "./VideoCard.style";
 
 export interface IProps {
-  video: IVideo;
+  video: Video;
   viewMode: ViewMode;
 }
 

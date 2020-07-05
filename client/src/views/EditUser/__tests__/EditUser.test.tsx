@@ -17,13 +17,13 @@ import { changeInput } from "Utility/testHelpers";
 import { ThemeProvider } from "styled-components";
 import { theme } from "Utility/resets.style";
 
-import { IUser } from "common";
+import { User } from "src/types/users/user.model";
 import Form from "../components/Form";
 
 afterEach(cleanup);
 
 const onSubmit = jest.fn();
-const testUser: IUser = {
+const testUser: User = {
   firstName: `testFirst`,
   lastName: `testLast`,
   email: `test@test.com`,

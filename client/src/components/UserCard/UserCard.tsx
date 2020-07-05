@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { User } from "../../types/users/user.model";
+import { ViewMode } from "../../types/ui/viewmode.enum";
 import * as S from "./UserCard.style";
 
 interface IProps {
   viewMode: ViewMode;
-  user: IUser;
+  user: User;
   isUser: boolean;
 }
 
@@ -16,7 +18,7 @@ function UserCard({ viewMode, user, isUser }: IProps): JSX.Element {
       aria-label={`About ${user.firstName} ${user.lastName}`}
     >
       <Link
-        aria-hidden={viewMode === `MAIN`}
+        aria-hidden={viewMode === ViewMode.MAIN}
         to={`/user/profile/${user.id}`}
         className="name"
       >

@@ -2,7 +2,7 @@ import React from "react";
 import { usePageMount } from "Hook/usePageMount";
 import { useUser } from "Hook/useContext";
 import UserCard from "Component/UserCard/UserCard";
-import { ViewMode } from "common";
+import { ViewMode } from "../../types/ui/viewmode.enum";
 import * as S from "./Feed.style";
 
 import Search from "./components/Search";
@@ -15,11 +15,7 @@ function Feed(): JSX.Element {
   return (
     <>
       <S.LeftSidebar>
-        <UserCard
-          viewMode={"LEFT_SIDEBAR" as ViewMode.leftSidebar}
-          isUser
-          user={user}
-        />
+        <UserCard viewMode={ViewMode.LEFT_SIDEBAR} isUser user={user} />
       </S.LeftSidebar>
 
       <S.MainColumn>

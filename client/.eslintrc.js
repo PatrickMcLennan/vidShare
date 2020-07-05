@@ -41,5 +41,6 @@ module.exports = {
     "prefer-promise-reject-errors": "off",
     "object-curly-newline": "off",
     "react/jsx-props-no-spreading": "off",
+    "import/no-cycle": "off",
   },
 };

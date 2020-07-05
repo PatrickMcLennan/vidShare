@@ -7,7 +7,7 @@ import {
 } from "styled-components";
 
 export const GlobalStyle: GlobalStyleComponent<
-  EmptyObject,
+  Record<string, any>,
   DefaultTheme
 > = createGlobalStyle`
   *,

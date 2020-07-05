@@ -8,6 +8,7 @@
       "Hook/*": ["src/hooks/*"],
       "Context/*": ["src/contexts/*"],
       "Utility/*": ["src/utils/*"],
+      "Type/*": ["src/types/"],
       "View/*": ["src/views/*"]
     }
   }
