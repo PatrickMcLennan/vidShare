@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { usePageMount } from "Hook/usePageMount";
 import { useUser } from "Hook/useContext";
 import UserCard from "Component/UserCard/UserCard";
@@ -6,16 +6,10 @@ import { ViewMode } from "common";
 import * as S from "./Feed.style";
 
 import Search from "./components/Search";
-
-const test = [`testing`, `testingAgain`];
+import Results from "./components/Results";
 
 function Feed(): JSX.Element {
   const { user } = useUser();
-  const [results, setResults] = useState([]);
-
-  const filterResults = (newSearch: string) => {
-    return setResults(prevResults => )
-  }
 
   usePageMount(`Home`);
   return (
@@ -29,7 +23,9 @@ function Feed(): JSX.Element {
       </S.LeftSidebar>
 
       <S.MainColumn>
-        <Search setResults={setResults} />
+        <header />
+        <Search />
+        <Results />
       </S.MainColumn>
 
       <S.RightColumn>

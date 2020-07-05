@@ -4,13 +4,18 @@ import axios, { AxiosResponse, AxiosError } from "axios";
 
 import { LoadingToast } from "Component/Toasts/Toasts";
 import client from "Utility/client";
-import { ApiError } from "common";
+import { ApiError, IUser, IVideo } from "common";
 
 export interface IApiContext {
   logIn: (
     showloading: boolean,
     { email, password }: { email: string; password: string }
   ) => Promise<void | ApiError>;
+  postComment: (
+    videoId: string,
+    userId: string,
+    comment: string
+  ) => Promise<any>;
   registerUser: (newUser: {
     email: string;
     firstName: string;
@@ -26,6 +31,38 @@ interface IProps {
 }
 
 export function ApiContextProvider({ children }: IProps): JSX.Element {
+  /* * * * * * *
+   * COMMENTS  *
+   * * * * * * */
+  /**
+   * @desc POSTS a new comment
+   * @param videoId Id the of video
+   * @param userId Id of the User Posting
+   * @param comment Comment Being posted
+   */
+  const postComment = (
+    videoId: string,
+    userId: string,
+    comment: string
+  ): Promise<any> => {
+    LoadingToast(`. . .`);
+    return axios({
+      method: `POST`,
+      url: `${process.env.API}${process.env.API_POST_COMMENT}`,
+      data: {
+        videoId,
+        userId,
+        comment,
+      },
+    })
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error))
+      .finally(() => toast.dismiss());
+  };
+
+  /* * * * *
+   * USER *
+   * * * * */
   /**
    * @desc Creates a new user.
    * @param showLoading Show the spinner, true default
@@ -99,7 +136,12 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
       .finally(() => toast.dismiss());
   };
 
-  const editUser = (editedUser): Promise<IUser | ApiError> => {
+  /**
+   * @desc Edits a USer
+   * @param editedUser Current user being edited
+   * @return IUser Returns User
+   */
+  const editUser = (editedUser): Promise<AxiosResponse<IUser> | ApiError> => {
     LoadingToast(`doing things . . . `);
     return client({
       method: `POST`,
@@ -113,6 +155,37 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
         (error: AxiosError): ApiError => ({
           responseCode: Number(error.code),
           message: `Problem editing a user`,
+          error,
+        })
+      );
+  };
+
+  /* * * * * * * *
+   * - VIDEOS -  *
+   * * * * * * * */
+
+  /**
+   * @desc Applies Search Criteria
+   * @param criteriaObject Key + value pairs of search criteria
+   * @return Array of values
+   */
+
+  const searchVideos = (
+    criteriaObject
+  ): Promise<AxiosResponse<IVideo[]> | ApiError> => {
+    LoadingToast(`Searching . . .`);
+    return client({
+      method: `POST`,
+      url: `${process.env.API}${process.env.API_SEARCH_VIDEO}`,
+      data: criteriaObject,
+    })
+      .then(
+        (results: AxiosResponse<IVideo[]>): AxiosResponse<IVideo[]> => results
+      )
+      .catch(
+        (error: AxiosError): ApiError => ({
+          responseCode: Number(error.code),
+          message: `Problem seacrhing videos`,
           error,
         })
       );

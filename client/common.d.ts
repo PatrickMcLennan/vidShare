@@ -37,16 +37,24 @@ declare interface IUser {
 
 declare interface IVideo {
   id: string;
+  description: string;
   title: string;
   url: string;
-  submittedBy: IUser;
-  rating: number;
-  quality: number;
-  comments: IComment[];
+  submittedBy?: IUser;
+  rating?: number;
+  quality?: number;
+  comments?: IComment[];
+  source: VideoSource;
 }
 
 declare enum ViewMode {
   main = `MAIN`,
   leftSidebar = `LEFT_SIDEBAR`,
   rightSidebar = `RIGHT_SIDEBAR`,
+}
+
+declare enum VideoSource {
+  youtube = `YOUTUBE`,
+  vimeo = `VIMEO`,
+  other = `OTHER`,
 }

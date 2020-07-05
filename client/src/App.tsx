@@ -32,7 +32,7 @@ function App(): JSX.Element {
               <RouteTransition exact path="/login">
                 <Login />
               </RouteTransition>
-              <RouteTransition exact path="/home">
+              <RouteTransition path="/home">
                 <Feed />
               </RouteTransition>
               <RouteTransition exact path="/register">

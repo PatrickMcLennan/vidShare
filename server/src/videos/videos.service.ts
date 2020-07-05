@@ -1,62 +1,27 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Video } from './video.model';
+import { Video } from './video.entity';
 import { CreateVideoDto } from './dto/create-video.dto';
-import { v1 as uuid } from 'uuid';
+// import { v1 as uuid } from 'uuid';
 import { AddRatingDto } from './dto/add-rating.dto';
+import { VideoRepository } from './video.repository';
+import { DeleteVideoDto } from './dto/delete-video.dto';
+import { EditVideoDto } from './dto/edit-video.dto';
+import { GetVideosFilterDto } from './dto/get-videos-filter.dto';
 
 @Injectable()
 export class VideosService {
-  private videos: Video[] = [];
+  constructor(private videoRepository: VideoRepository) {}
 
-  // DELETE
-  deleteVideo(id: string): void {
-    const found = this.getVideoById(id);
-    this.videos = this.videos.filter(video => video.id !== found.id);
+  createVideo(createVideoDto: CreateVideoDto): Promise<Video> {
+    return this.videoRepository.createVideo(createVideoDto);
   }
-
-  // GET
-  getVideoById(id: string): Video {
-    const video = this.videos.find(video => video.id === id);
-
-    if (!video) {
-      throw new NotFoundException(`Video with id ${id} was not found`);
-    } else return video;
+  deleteVideo(deleteVideoDto: DeleteVideoDto): Promise<void> {
+    return this.videoRepository.deleteVideo(deleteVideoDto);
   }
-
-  getAllVideos(): Video[] {
-    return this.videos;
+  editVideo(editVideoDto: EditVideoDto): Promise<Video> {
+    return this.videoRepository.editVideo(editVideoDto);
   }
-
-  // PATCH
-  addRating(addRatingDto: AddRatingDto): Video {
-    const { userId, rating, videoId } = addRatingDto;
-    const found = this.getVideoById(videoId);
-    const usersCurrentVote = found.userVotes.filter(vote => vote.id === userId);
-    if (!usersCurrentVote) {
-      found.userVotes = [...found.userVotes, { userId, rating }];
-    } else {
-      found.userVotes = found.userVotes.map(vote =>
-        vote.userId === userId ? { userId, rating } : vote,
-      );
-    }
-    return found;
-  }
-
-  // POST
-  createVideo(createVideoDto: CreateVideoDto): Video {
-    const { title, url, submittedBy, quality, source } = createVideoDto;
-    const video: Video = {
-      id: uuid(),
-      title,
-      url,
-      source,
-      quality,
-      submittedBy,
-      rating: 0,
-      comments: [],
-      userVotes: [],
-    };
-    this.videos.push(video);
-    return video;
+  getVideos(getVideosDto: GetVideosFilterDto): Promise<Video[]> {
+    return this.videoRepository.getVideos(getVideosDto);
   }
 }
