@@ -3,6 +3,7 @@ import { useParams, Redirect } from "react-router-dom";
 
 import { useUser, useApi } from "Hook/useContext";
 
+import { ApiError } from "src/types/client/api-error.interface";
 import Form from "./components/Form";
 
 function EditUser(): JSX.Element {
@@ -11,7 +12,7 @@ function EditUser(): JSX.Element {
   const { id } = useParams();
   if (id !== user.id) return <Redirect to="/" />;
 
-  const onSubmit = async (values) => {
+  const onSubmit: (values) => Promise<ApiError | any> = async (values) => {
     console.log(values);
     try {
       await editUser(values);

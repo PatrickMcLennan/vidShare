@@ -1,0 +1,929 @@
+{
+	"info": {
+		"_postman_id": "313d785d-b517-4cf1-8e6a-3669214bb68f",
+		"name": "vidShare",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Empty Failure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Test433321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Successful Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Test2342",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Videos",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Empty Failure",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No Title Failure",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "https://www.google.com",
+											"type": "text"
+										},
+										{
+											"key": "submittedBy",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "quality",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "YOUTUBE",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No Url Failure",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "quality",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "YOUTUBE",
+											"description": "\n",
+											"type": "text"
+										},
+										{
+											"key": "submittedBy",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No Quality Failure",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "https://www.google.com",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "quality",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "submittedBy",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "YOUTUBE",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bad Id Failure",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "https://www.google.com",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "quality",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "YOUTUBE",
+											"type": "text"
+										},
+										{
+											"key": "submittedBy",
+											"value": "99",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Source Failure",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "https://www.google.com",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "submittedBy",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "fail",
+											"type": "text"
+										},
+										{
+											"key": "quality",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "https://www.google.ca",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "quality",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "OTHER",
+											"type": "text"
+										},
+										{
+											"key": "submittedBy",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Empty Failure",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No UserId Failure",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "videoId",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://www.localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No VideoId Failure",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://www.localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "videoId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "userId",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://www.localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update",
+					"item": [
+						{
+							"name": "Empty Failure",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No Title Failure",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "videoId",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Incorrect Permissions Failure",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "videoId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful Title",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "videoId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "something different",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful Title + Description",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "videoId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "something more different",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "something ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Read",
+					"item": [
+						{
+							"name": "Successful Get All",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful Source Filter",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "VIMEO",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful Search Filter",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "search",
+											"value": "different",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/video",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"video"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

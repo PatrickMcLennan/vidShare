@@ -47,5 +47,8 @@ module.exports = {
     "no-else-return": "off",
     "nonblock-statement-body-position": "off",
     curly: "off",
+    "import-order": "off",
+    "no-prototype-builtins": "off",
+    "no-lonely-if": "off",
   },
 };

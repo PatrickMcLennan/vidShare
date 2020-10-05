@@ -4,19 +4,21 @@ import makeAnimated from "react-select/animated";
 import { useQuery } from "Hook/useQuery";
 
 import { useUpdateParams } from "Hook/useUpdateParams";
+import { useParseParams } from "Hook/useParseParams";
 import * as S from "../Feed.style";
 
 function Search(): JSX.Element {
   const components = makeAnimated();
   const history = useHistory();
   const location = useLocation();
-  const params = useQuery;
+  const params = useParseParams();
+  console.log(params);
   const filterColors = (inputValue) =>
     [
-      { label: `green`, value: 0, search: `category` },
-      { label: `red`, value: 1, search: `youtube` },
-      { label: `orange`, value: 2, search: `vimeo` },
-      { label: `blue`, value: 3, search: `category` },
+      { label: `green`, value: `green`, search: `category` },
+      { label: `red`, value: `red`, search: `youtube` },
+      { label: `orange`, value: `orange`, search: `vimeo` },
+      { label: `blue`, value: `blue`, search: `category` },
     ].filter((color) => color.label.includes(inputValue.toLowerCase()));
 
   const loadOptions = (inputValue, callback) => {

@@ -53,6 +53,7 @@ function Form({ onSubmit, user }: IProps): JSX.Element {
           type="email"
         />
       </label>
+      <input type="submit" value="Change" />
     </form>
   );
 }

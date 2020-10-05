@@ -24,6 +24,7 @@ export interface IApiContext {
     password: string;
   }) => Promise<void | ApiError>;
   editUser: (user: User) => Promise<User | ApiError>;
+  searchVideos: (criteriaObject) => Promise<AxiosResponse | ApiError>;
 }
 
 export const ApiContext = createContext({} as IApiContext);
@@ -194,7 +195,9 @@ export function ApiContextProvider({ children }: IProps): JSX.Element {
   };
 
   return (
-    <ApiContext.Provider value={{ logIn, registerUser, editUser }}>
+    <ApiContext.Provider
+      value={{ logIn, registerUser, editUser, searchVideos }}
+    >
       {children}
     </ApiContext.Provider>
   );
